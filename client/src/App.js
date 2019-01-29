@@ -7,12 +7,9 @@ const App = () => {
     <Router>
       <div>
         <Nav />
-        <Switch>
-          <Route exact path="/" component={} />
-        </Switch>
       </div>
     </Router>
   );
-};
+}
 
 export default App;
