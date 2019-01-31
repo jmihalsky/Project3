@@ -3,7 +3,7 @@ CREATE DATABASE snow_routes;
 
 USE snow_routes;
 
-CREATE user (
+CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     user_name varchar(20) NOT NULL,
     email varchar(20) NOT NULL,
@@ -13,12 +13,12 @@ CREATE user (
     PRIMARY KEY (user_id)
 );
 
-CREATE user_favs (
+CREATE TABLE user_favs (
     user_id int NOT NULL,
     resort_id int NOT NULL
 );
 
-CREATE resorts (
+CREATE TABLE resorts (
     resort_id int NOT NULL AUTO_INCREMENT,
     resort_name varchar(30) NOT NULL,
     resort_region varchar(15),
@@ -37,7 +37,7 @@ CREATE resorts (
     PRIMARY KEY (resort_id)
 );
 
-CREATE resort_conditions (
+CREATE TABLE resort_conditions (
     report_date date NOT NULL,
     resort_id int NOT NULL,
     new_snow int,
@@ -48,7 +48,7 @@ CREATE resort_conditions (
     PRIMARY KEY(report_date,resort_id)
 );
 
-CREATE user_res_conditions (
+CREATE TABLE user_res_conditions (
     cond_id int NOT NULL AUTO_INCREMENT,
     resort_id int NOT NULL,
     user_id int NOT NULL,
