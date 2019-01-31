@@ -34,3 +34,26 @@ CREATE resorts (
     map_link varchar(50)
     PRIMARY KEY (resort_id)
 );
+
+CREATE resort_conditions (
+    report_date date NOT NULL,
+    resort_id int NOT NULL,
+    new_snow int,
+    temp_high int,
+    temp_low int,
+    weather_cond text,
+    wind int,
+    PRIMARY KEY(report_date,resort_id)
+);
+
+CREATE user_res_conditions (
+    cond_id int NOT NULL AUTO_INCREMENT,
+    resort_id int NOT NULL,
+    user_id int NOT NULL,
+    report_date date NOT NULL,
+    new_snow int,
+    temp int,
+    lines varchar(20),
+    cond_notes text,
+    PRIMARY KEY (cond_id)
+);
