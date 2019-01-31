@@ -27,6 +27,8 @@ CREATE resorts (
     city varchar(50),
     state varchar(10),
     postal_code varchar(10),
+    lat decimal(10,8),
+    long decimal(10,8),
     status varchar(20),
     num_slopes int,
     num_slopes_open int,
