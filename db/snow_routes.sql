@@ -33,7 +33,7 @@ CREATE TABLE resorts (
     num_slopes int,
     num_slopes_open int,
     web_link varchar(50),
-    map_link varchar(50)
+    map_link varchar(50),
     PRIMARY KEY (resort_id)
 );
 
@@ -55,7 +55,7 @@ CREATE TABLE user_res_conditions (
     report_date date NOT NULL,
     new_snow int,
     temp int,
-    lines varchar(20),
+    lft_lines varchar(20),
     cond_notes text,
     PRIMARY KEY (cond_id)
 );
