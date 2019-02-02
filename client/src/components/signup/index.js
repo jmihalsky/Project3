@@ -30,6 +30,19 @@ render() {
                     <input className="form-input" type="password" name="pword" value={this.state.pword} onChange={this.handleChange}/>
                 </div>
                 <div className="form-group">
+                    <label className="form-label" htmlFor="fname">First Name:</label>
+                    <input className="form-input" type="text" id="fname" name="fname" value={this.state.first_name} onChange={this.handleChange}/>
+                </div>
+                <div className="form-group">
+                    <label className="form-label" htmlFor="lname">Last Name:</label>
+                    <input className="form-input" type="text" id="lname" name="lname" value={this.state.last_name} onChange={this.handleChange}/>
+                </div>
+                <div className="form-group">
+                    <label className="form-label" htmlFor="email">Email:</label>
+                    <input className="form-input" type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                </div>
+                <div className="form-group">
+                    <button className="btn btn-primary" onClick={this.handleSubmit} type="submit">Submit</button>
                 </div>
             </form>
         </div>
