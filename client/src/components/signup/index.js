@@ -14,6 +14,35 @@ class UsrSignup extends Component {
             last_name: ""
 
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value});
+    }
+
+    handleSubmit(user_name, pword, email, first_name, last_name) {
+        var newUser = {
+            user_name: user_name,
+            pword: pword,
+            email: email,
+            first_name: first_name,
+            last_name: last_name
+        };
+        API.createUser(newUser).then(res => {
+            if(!res.data.errmsg)
+            {
+
+            }
+            else
+            {
+
+            }
+        }).catch(error => {
+            console.log(error);
+        })
+
     }
 
 render() {

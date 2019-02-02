@@ -5,7 +5,7 @@ const router = require("express").Router();
 const db = require("../smodels");
 const passport = require("../configuration/passport");
 
-router.post("/signup", function(req,res){
+router.post("/API/signup", function(req,res){
     db.user.create({
         user_name: req.body.user_name,
         email: req.body.email,
