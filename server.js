@@ -14,13 +14,14 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Routes
-app.use(routes);
 
 // Passport info
 app.use(session({secret: "snowroutes", resave: true, saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Routes
+app.use(routes);
 
 // Add Sequelize
 

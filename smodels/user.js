@@ -1,7 +1,7 @@
 var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(sequelize, DataTypes){
-    var user = sequelize.define("user",{
+    var usr = sequelize.define("usr",{
         user_id: {
             type: DataTypes.INTEGER,
             PrimaryKey: true
@@ -35,15 +35,15 @@ module.exports = function(sequelize, DataTypes){
         timestamps: false,
         freezeTableName: true
     });
-    user.removeAttribute('id');
+    usr.removeAttribute('id');
 
-    user.prototype.validPassword = function(pword){
+    usr.prototype.validPassword = function(pword){
         return bcrypt.compareSync(pword, this.pword);
     };
 
-    user.hook("beforeCreate",function(user){
-        user.pword = bcrypt.hashSync(user.pword, bcrypt.genSaltSync(10),null);
+    usr.hook("beforeCreate",function(usr){
+        usr.pword = bcrypt.hashSync(usr.pword, bcrypt.genSaltSync(10),null);
     });
     
-    return user;
+    return usr;
 };
