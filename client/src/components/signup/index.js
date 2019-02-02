@@ -33,7 +33,7 @@ class UsrSignup extends Component {
         API.createUser(newUser).then(res => {
             if(!res.data.errmsg)
             {
-
+                this.setState({ redirectTo: "/profile"});
             }
             else
             {
