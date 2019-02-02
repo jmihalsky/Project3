@@ -10,15 +10,15 @@ var db = require("../smodels");
 passport.use(new LocalStrategy(
   // Our user will sign in using an email, rather than a "username"
   {
-    usernameField: "username",
+    usernameField: "user_name",
     passwordField: "pword"
   },
   function(email, pword, done) {
     // When a user tries to sign in this code runs
     console.log(email);
-    db.user.findOne({
+    db.usr.findOne({
       where: {
-        email: email
+        user_name: user_name
       }
     }).then(function(dbUser) {
       // If there's no user with the given email
@@ -42,8 +42,8 @@ passport.use(new LocalStrategy(
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
+passport.serializeUser(function(usr, cb) {
+  cb(null, usr);
 });
 //
 passport.deserializeUser(function(obj, cb) {

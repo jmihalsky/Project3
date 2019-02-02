@@ -30,6 +30,7 @@ class UsrSignup extends Component {
             first_name: first_name,
             last_name: last_name
         };
+        console.log(newUser);
         API.createUser(newUser).then(res => {
             if(!res.data.errmsg)
             {

@@ -3,7 +3,7 @@ CREATE DATABASE snow_routes;
 
 USE snow_routes;
 
-CREATE TABLE user (
+CREATE TABLE usr (
     user_id int NOT NULL AUTO_INCREMENT,
     user_name varchar(20) NOT NULL,
     email varchar(20) NOT NULL,
