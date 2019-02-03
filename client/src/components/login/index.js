@@ -30,7 +30,15 @@ class UsrLogin extends Component {
                     <h4>Snow Routes User Login</h4>
                     <form className="form-horizontal">
                         <div className="form-group">
-                            
+                            <label className="form-label" htmlFor="user_name">Username:</label>
+                            <input className="form-input" type="text" id="user_name" name="user_name" value={this.state.user_name} onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="pword">Password:</label>
+                            <input className="form-input" type="password" name="pword" value={this.state.pword} onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group">
+                            <button className="btn btn-primary" onClick={this.handleSubmit} type="submit">Login</button>
                         </div>
                     </form>
                 </div>
