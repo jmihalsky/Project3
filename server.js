@@ -26,6 +26,6 @@ app.use(routes);
 // Add Sequelize
 
 // Start Server
-app.listen(PORT, () => {
+app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}`);
 });
