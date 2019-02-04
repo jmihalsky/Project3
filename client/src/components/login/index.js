@@ -1,6 +1,7 @@
 // User login component
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import API from "../../utils/API";
 
 class UsrLogin extends Component {
     constructor(){
@@ -16,6 +17,29 @@ class UsrLogin extends Component {
 
     handleChange(event){
         this.setState({ [event.target.name]: event.target.value });
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        var UserInfo = {
+            user_name: this.state.user_name,
+            pword: this.state.pword
+        };
+        API.loginUser(UserInfo).then(response => {
+            console.log(response);
+            if (response.status === 200)
+            {
+                this.props.updateUser({
+                    loggedIn: true,
+                    user_name: response.data.username
+                });
+                this.setState({
+                    redirectTo: "/"
+                });
+            }
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     render() {
