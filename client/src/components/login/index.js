@@ -31,10 +31,13 @@ class UsrLogin extends Component {
             {
                 this.props.updateUser({
                     loggedIn: true,
-                    user_name: response.data.username
+                    user_name: response.data.username,
+                    email: response.data.email,
+                    first_name: response.data.fist_name,
+                    last_name: response.data.last_name
                 });
                 this.setState({
-                    redirectTo: "/"
+                    redirectTo: "/profile"
                 });
             }
         }).catch(error => {
