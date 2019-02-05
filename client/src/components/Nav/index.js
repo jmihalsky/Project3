@@ -16,7 +16,7 @@ const Nav = props => (
             href="/"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
-            Google Books Search
+            Snow Routes
           </a>
         </li>
       </ul>
