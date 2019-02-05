@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 const schedule = require("node-schedule");
+const env = require("dotenv").config({path: "./keys/apikey.env"});
 
 var passport = require("./configuration/passport");
 // Express
