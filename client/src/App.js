@@ -12,6 +12,12 @@ class App extends Component {
       loggedIn: false,
       user_name: null
     }
+
+    this.updateUser = this.updateUser.bind(this);
+  }
+
+  updateUser(userObject){
+    this.setState(userObject);
   }
 
   render(){
@@ -21,7 +27,7 @@ class App extends Component {
         <Nav />
         <Switch>
           <Route exact path="/signup" component={SignUp}/>
-          <Route exact path="/login" component={UsrLogin}/>
+          <Route exact path="/login" render={() => <UsrLogin updateUser={this.updateUser}/>}/>
           <Route exact path="/profile" component={UsrProfile}/>
         </Switch>
       </div>
