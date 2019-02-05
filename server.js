@@ -4,6 +4,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
+const schedule = require("node-schedule");
 
 var passport = require("./configuration/passport");
 // Express
@@ -23,6 +24,10 @@ app.use(passport.session());
 // Routes
 app.use(routes);
 
+// Job scheduler
+const snowInfo = schedule.scheduleJob("0 10 8 * * *", function(){
+  console.log("scheduler working");
+})
 // Add Sequelize
 
 // Start Server
