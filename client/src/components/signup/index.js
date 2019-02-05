@@ -1,6 +1,6 @@
 // user signup component form
 import React, { Component } from "react";
-import API  from "../utils/API";
+import API  from "../../utils/API";
 
 class UsrSignup extends Component {
     constructor(){
@@ -22,13 +22,14 @@ class UsrSignup extends Component {
         this.setState({ [event.target.name]: event.target.value});
     }
 
-    handleSubmit(user_name, pword, email, first_name, last_name) {
+    handleSubmit(event) {
+        event.preventDefault();
         var newUser = {
-            user_name: user_name,
-            pword: pword,
-            email: email,
-            first_name: first_name,
-            last_name: last_name
+            user_name: this.state.user_name,
+            pword: this.state.pword,
+            email: this.state.email,
+            first_name: this.state.first_name,
+            last_name: this.state.last_name
         };
         console.log(newUser);
         API.createUser(newUser).then(res => {
@@ -38,7 +39,7 @@ class UsrSignup extends Component {
             }
             else
             {
-
+                console.log("success");
             }
         }).catch(error => {
             console.log(error);
@@ -60,12 +61,12 @@ render() {
                     <input className="form-input" type="password" name="pword" value={this.state.pword} onChange={this.handleChange}/>
                 </div>
                 <div className="form-group">
-                    <label className="form-label" htmlFor="fname">First Name:</label>
-                    <input className="form-input" type="text" id="fname" name="fname" value={this.state.first_name} onChange={this.handleChange}/>
+                    <label className="form-label" htmlFor="first_name">First Name:</label>
+                    <input className="form-input" type="text" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleChange}/>
                 </div>
                 <div className="form-group">
                     <label className="form-label" htmlFor="lname">Last Name:</label>
-                    <input className="form-input" type="text" id="lname" name="lname" value={this.state.last_name} onChange={this.handleChange}/>
+                    <input className="form-input" type="text" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleChange}/>
                 </div>
                 <div className="form-group">
                     <label className="form-label" htmlFor="email">Email:</label>

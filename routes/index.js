@@ -20,6 +20,15 @@ router.post("/API/signup", function(req,res){
     });
 });
 
+router.post("/API/login", passport.authenticate("local"), function(req,res){
+    console.log("logged in ", req.body.user_name);
+    userInfo = {
+        user_name: req.body.user_name,
+        logged_in: true
+    };
+    res.send(userInfo);
+});
+
 router.get("/API/test", function(req,res){
     res.json("test");
 });
