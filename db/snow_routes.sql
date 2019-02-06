@@ -41,10 +41,11 @@ CREATE TABLE resort_conditions (
     report_date date NOT NULL,
     resort_id int NOT NULL,
     new_snow int,
-    temp_high int,
-    temp_low int,
-    weather_cond text,
-    wind int,
+    base_depth_min int,
+    base_depth_max int,
+    cond text,
+    num_slopes_open int,
+    num_lifts_open int,
     PRIMARY KEY(report_date,resort_id)
 );
 

@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 const schedule = require("node-schedule");
+require("dotenv").config({path: "./keys/apikey.env"});
+const ResortInfo = require("./weather_api/weather");
 
 var passport = require("./configuration/passport");
 // Express
@@ -25,8 +27,9 @@ app.use(passport.session());
 app.use(routes);
 
 // Job scheduler
-const snowInfo = schedule.scheduleJob("0 10 8 * * *", function(){
+const snowInfo = schedule.scheduleJob("0 0 9 * * *", function(){
   console.log("scheduler working");
+  ResortInfo();
 })
 // Add Sequelize
 
