@@ -4,35 +4,41 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./components/signup";
 import UsrLogin from "./components/login";
 import UsrProfile from "./components/profile";
+import MapContainer from "./components/Map/MapComponent";
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       loggedIn: false,
       user_name: null
-    }
+    };
 
     this.updateUser = this.updateUser.bind(this);
   }
 
-  updateUser(userObject){
+  updateUser(userObject) {
     this.setState(userObject);
   }
 
-  render(){
-  return (
-    <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route exact path="/signup" component={SignUp}/>
-          <Route exact path="/login" render={() => <UsrLogin updateUser={this.updateUser}/>}/>
-          <Route exact path="/profile" component={UsrProfile}/>
-        </Switch>
-      </div>
-    </Router>
-  );
+  render() {
+    return (
+      <Router>
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/signup" component={SignUp} />
+            <Route
+              exact
+              path="/login"
+              render={() => <UsrLogin updateUser={this.updateUser} />}
+            />
+            <Route exact path="/profile" component={UsrProfile} />
+          </Switch>
+          <MapContainer />
+        </div>
+      </Router>
+    );
   }
 }
 

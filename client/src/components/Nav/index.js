@@ -23,10 +23,10 @@ const Nav = props => (
       <ul className="nav navbar-nav navbar-right">
         <li>
           <a
-            href="/savedbooks"
+            href="/login"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
-            <button className="btn btn-dark">Saved Books</button>
+            <button className="btn btn-dark">Login</button>
           </a>
         </li>
       </ul>
