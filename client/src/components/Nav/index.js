@@ -2,21 +2,14 @@ import React from "react";
 
 const Nav = props => (
   <div>
-    <nav
-      className="navbar fixed-top"
-      style={{
-        marginBottom: "40px",
-        backgroundColor: "royalblue",
-        height: "50px"
-      }}
-    >
+    <nav className="navbar" style={{ backgroundColor: "#333" }}>
       <ul className="nav navbar-nav navbar-left">
         <li>
           <a
             href="/"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
-            Snow Routes
+            <img src="./banner.png" alt="banner" style={{ height: "70px" }} />
           </a>
         </li>
       </ul>
