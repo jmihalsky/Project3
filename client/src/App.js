@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./components/signup";
 import UsrLogin from "./components/login";
 import UsrProfile from "./components/profile";
-import MapContainer from "./components/Map/MapComponent";
+import HomePage from "./pages/HomePage";
 
 class App extends Component {
   constructor() {
@@ -27,6 +27,7 @@ class App extends Component {
         <div>
           <Nav />
           <Switch>
+            <Route exact path="/" component={HomePage} />
             <Route exact path="/signup" component={SignUp} />
             <Route
               exact
@@ -35,7 +36,6 @@ class App extends Component {
             />
             <Route exact path="/profile" component={UsrProfile} />
           </Switch>
-          <MapContainer />
         </div>
       </Router>
     );
