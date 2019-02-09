@@ -5,7 +5,7 @@ export class ResortsContainer extends Component {
     return (
       <div
         style={{
-          backgroundColor: "rgba(51, 51, 51, 0.9)",
+          backgroundColor: "rgba(51, 51, 51, 0.5)",
           minHeight: "100%",
           color: "white",
           textShadow: "2px 2px 4px #000",
