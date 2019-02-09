@@ -49,7 +49,7 @@ class SavedResorts extends Component {
                     src={
                       resort.src
                         ? resort.src
-                        : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/resort-icon.png"
+                        : "https://i.imgur.com/xFsuDGI.png"
                     }
                     title={resort.title ? resort.title : "No Title Available"}
                     authors={
