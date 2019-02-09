@@ -5,6 +5,7 @@ import SignUp from "./components/signup";
 import UsrLogin from "./components/login";
 import UsrProfile from "./components/profile";
 import HomePage from "./pages/HomePage";
+import SavedResorts from "./pages/SavedResorts";
 
 class App extends Component {
   constructor() {
@@ -35,6 +36,7 @@ class App extends Component {
               render={() => <UsrLogin updateUser={this.updateUser} />}
             />
             <Route exact path="/profile" component={UsrProfile} />
+            <Route exact path="/saved" component={SavedResorts} />
           </Switch>
         </div>
       </Router>
