@@ -19,7 +19,7 @@ const Nav = props => (
             href="/login"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
-            <button className="btn btn-dark">Login</button>
+            <button className="btn btn-dark btn-lg">Login</button>
           </a>
         </li>
       </ul>
