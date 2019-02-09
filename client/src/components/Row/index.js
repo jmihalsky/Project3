@@ -4,7 +4,7 @@ const Row = props => {
   return (
     <div
       className={`row${props.fluid ? "-fluid" : ""}`}
-      style={{ margin: "5px" }}
+      style={{ margin: "0" }}
     >
       {props.children}
     </div>
