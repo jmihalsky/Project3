@@ -8,11 +8,11 @@ class UsrProfile extends Component {
         this.state = {
             UserProfile: []
         }
-        this.logout = this.logout.bind(this);
+        // this.logout = this.logout.bind(this);
     }
 
     componentDidMount(){
-        this.profileLoad(this.props.user_name);
+        this.profileLoad(this.state.user_name);
     }
 
     profileLoad = (user_name) => {
@@ -24,7 +24,7 @@ class UsrProfile extends Component {
     render() {
         return (
             <div>
-                <h3>User Profile - {this.props.user_name}</h3>
+                <h3>User Profile - {this.state.UserProfile}</h3>
             </div>
         )
     }

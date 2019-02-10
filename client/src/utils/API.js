@@ -11,6 +11,9 @@ export default {
     },
     UserProfile: function(user_name){
         console.log(user_name);
-        return axios.post("/API/userinfo", user_name);
+        return axios.get("/API/userinfo", user_name);
+    },
+    AllResorts: function(){
+        return axios.get("/API/resort_all");
     }
 };

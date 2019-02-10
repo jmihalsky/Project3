@@ -3,7 +3,7 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import MapComponent from "../components/Map/MapComponent";
-import ResortsComponent from "../components/Resorts/ResortsComponent";
+import ResortsComponent from "../components/Resorts";
 
 class HomePage extends Component {
   render() {

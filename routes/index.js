@@ -29,6 +29,22 @@ router.post("/API/login", passport.authenticate("local"), function(req,res){
     res.send(userInfo);
 });
 
+router.get("/API/userinfo", function(req,res){
+    db.usr.findAll({where: {user_name: req.body.user_name}}).then(function(dbUsr){
+        res.json(dbUser);
+    }).catch(function(err){
+        res.json(err);
+    });
+});
+
+router.get("/API/resort_all", function(req,res){
+    db.resorts.findAll({}).then(function(dbResAll){
+        res.json(dbResAll);
+    }).catch(function(err){
+        res.json(err);
+    });
+});
+
 router.get("/API/test", function(req,res){
     res.json("test");
 });
