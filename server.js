@@ -28,10 +28,10 @@ app.use(passport.session());
 app.use(routes);
 
 // Job scheduler
-const snowInfo = schedule.scheduleJob("0 50 15 * * *", function(){
+const snowInfo = schedule.scheduleJob("0 57 16 * * *", function(){
   console.log("scheduler working");
-  // ResortInfo();
-  ResState();
+  ResortInfo();
+  // ResState();
 })
 // Add Sequelize
 
