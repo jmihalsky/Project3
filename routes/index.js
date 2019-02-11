@@ -38,7 +38,7 @@ router.get("/API/userinfo", function(req,res){
 });
 
 router.get("/API/resort_all", function(req,res){
-    db.resorts.findAll({}).then(function(dbResAll){
+    db.resort_weather.findAll({}).then(function(dbResAll){
         res.json(dbResAll);
     }).catch(function(err){
         res.json(err);

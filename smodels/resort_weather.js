@@ -1,9 +1,8 @@
 module.exports = function(sequelize, DataTypes){
-    var resorts = sequelize.define("resorts",{
+    var resort_weather = sequelize.define("resort_weather",{
         resort_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            PrimaryKey: true
+            allowNull: false
         },
         resort_name: {
             type: DataTypes.STRING,
@@ -49,10 +48,6 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.INTEGER,
             allowNull: true 
         },
-        num_slopes_open: {
-            type: DataTypes.INTEGER,
-            allowNull: true 
-        },
         web_link: {
             type: DataTypes.STRING,
             allowNull: true 
@@ -60,15 +55,42 @@ module.exports = function(sequelize, DataTypes){
         map_link: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        report_date: {
+            type: DataTypes.DATE(6),
+            allowNull: false
+        },
+        new_snow: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        base_depth_min: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        base_depth_max: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        cond: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        num_slopes_open: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        num_lifts_open: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
-
     },
     {
         timestamps: false,
         freezeTableName: true
     });
 
-    resorts.removeAttribute("id");
+    resort_weather.removeAttribute('id');
 
-    return resorts;
+    return resort_weather;
 };
