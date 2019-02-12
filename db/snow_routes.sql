@@ -60,3 +60,38 @@ CREATE TABLE user_res_conditions (
     cond_notes text,
     PRIMARY KEY (cond_id)
 );
+
+CREATE VIEW resort_weather
+AS 
+select resorts.resort_id,
+    resorts.resort_name,
+    resorts.resort_region,
+    resorts.address1,
+    resorts.address2,
+    resorts.city,
+    resorts.state,
+    resorts.postal_code,
+    resorts.lat,
+    resorts.lon,
+    resorts.status,
+    resorts.num_slopes,
+    resorts.web_link,
+    resorts.map_link,
+    b.report_date,
+    b.new_snow,
+    b.base_depth_min,
+    b.base_depth_max,
+    b.cond,
+    b.num_slopes_open,
+    b.num_lifts_open
+from resorts
+    inner join
+    (select resort_conditions.*
+    from resort_conditions
+        inner join 
+        (select resort_id,
+            max(report_date) report_date
+        from resort_conditions
+        group by resort_id) as a 
+        on resort_conditions.resort_id = a.resort_id) as b 
+    on resorts.resort_id = b.resort_id;
