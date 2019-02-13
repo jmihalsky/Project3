@@ -3,7 +3,7 @@ import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./components/signup";
 import UsrLogin from "./components/login";
-import UsrProfile from "./components/profile";
+import UsrProfile from "./pages/UserProfile";
 import HomePage from "./pages/HomePage";
 import SavedResorts from "./pages/SavedResorts";
 
