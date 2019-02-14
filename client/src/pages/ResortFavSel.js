@@ -14,13 +14,26 @@ class ResFavoriteSel extends Component {
     }
 
     componentDidMount(){
-
+        this.resListLoad();
     }
 
     resListLoad = () => {
         API.AllResorts().then(res => {
             this.setState({ResList: res.data});
         });
+    }
+
+    resListRender = () => {
+        if(this.state.ResList)
+        {
+            var newArray = this.state.ResList.map(a => {
+                
+            })
+        }
+        else
+        {
+
+        }
     }
 
     render(){
