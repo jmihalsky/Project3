@@ -7,6 +7,10 @@ import ResortsComponent from "../components/Resorts";
 import API from "../utils/API";
 
 class HomePage extends Component {
+  componentDidMount() {
+    this.getResorts();
+  }
+
   state = {
     ResList: []
   };
@@ -22,10 +26,10 @@ class HomePage extends Component {
       <Container>
         <Row>
           <Col size="md-4">
-            <ResortsComponent />
+            <ResortsComponent resorts={this.state.ResList} />
           </Col>
           <Col size="md-8">
-            <MapComponent />
+            <MapComponent resorts={this.state.ResList} />
           </Col>
         </Row>
       </Container>

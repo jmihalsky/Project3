@@ -1,24 +1,9 @@
 import React, { Component } from "react";
 import HomeResList from "../ResortList";
-import API from "../../utils/API";
 
 export class ResortsContainer extends Component {
-  componentDidMount() {
-    this.getResorts();
-  }
-
-  state = {
-    ResList: []
-  };
-
-  getResorts = () => {
-    API.AllResorts().then(res => {
-      this.setState({ ResList: res.data });
-    });
-  };
-
   resortCard = () => {
-    let temp = this.state.ResList.map(r => (
+    let temp = this.props.resorts.map(r => (
       <HomeResList
         key={r.resort_id}
         resort_name={r.resort_name}
