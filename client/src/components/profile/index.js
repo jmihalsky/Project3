@@ -1,33 +1,13 @@
-// user profile page
-import React, { Component } from "react";
-import API from "../../utils/API";
+// user profile component
+import React from "react";
 
-class UsrProfile extends Component {
-    constructor(){
-        super()
-        this.state = {
-            UserProfile: []
-        }
-        // this.logout = this.logout.bind(this);
-    }
-
-    componentDidMount(){
-        this.profileLoad(this.state.user_name);
-    }
-
-    profileLoad = (user_name) => {
-        API.UserProfile(user_name).then(res => {
-            this.setState({UserProfile: res.data})
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <h3>User Profile - {this.state.UserProfile}</h3>
+export default function Profile(props){
+    return(
+        <div className="card">
+            <div className="card-header">
+                <h3>{props.user_name}</h3>
+                <h3>{props.first_name}{props.last_name}</h3>
             </div>
-        )
-    }
+        </div>
+    );
 }
-
-export default UsrProfile;

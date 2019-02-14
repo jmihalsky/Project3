@@ -11,9 +11,12 @@ export default {
     },
     UserProfile: function(user_name){
         console.log(user_name);
-        return axios.get("/API/userinfo", user_name);
+        return axios.get("/API/userinfo/" + user_name);
     },
     AllResorts: function(){
         return axios.get("/API/resort_all");
+    },
+    UserResFavs: function(user_name){
+        return axios.get("/API/user_resorts/" + user_name);
     }
 };
