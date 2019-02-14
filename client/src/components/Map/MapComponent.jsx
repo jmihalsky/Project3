@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import API from "../../utils/API";
 
 export class MapContainer extends Component {
   componentDidMount() {
-    this.getResorts();
+    this.resortMarker();
   }
 
   state = {
@@ -13,15 +12,8 @@ export class MapContainer extends Component {
     selectedPlace: {}
   };
 
-  getResorts = () => {
-    API.AllResorts().then(res => {
-      this.setState({ ResList: res.data });
-      console.log(res.data);
-    });
-  };
-
   resortMarker = () => {
-    let temp = this.state.ResList.map(r => (
+    let temp = this.props.resorts.map(r => (
       <Marker
         key={r.resort_id}
         resort_name={r.resort_name}
