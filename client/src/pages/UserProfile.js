@@ -3,12 +3,15 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import Profile from "../components/profile";
+import UserFavs from "../components/usr_resorts";
+import NoFavs from "../components/no_favs";
 import API from "../utils/API";
 
 class UserProfile extends Component {
     state = {
         user_name: "",
-        UserProfile: []
+        UserProfile: [],
+        UserFavs: []
     }
 
     componentDidMount(){
@@ -36,6 +39,32 @@ class UserProfile extends Component {
 
         }
     }
+
+    userFavLoad = (user_name) => {
+        API.UserResFavs(user_name).then(res => {
+            this.setState({UserFavs: res.data});
+        });
+    }
+
+    favsRender = () => {
+        if(this.state.UserFavs)
+        {
+            var resArray = this.state.UserFavs.map(b => {
+                return <UserFavs key={b.resort_id}
+                        resort_name={b.resort_name}/>
+            })
+            return resArray;
+        }
+        else
+        {
+            this.userNoFavs();
+        }
+    }
+
+    userNoFavs = () => {
+        return <NoFavs></NoFavs>;
+    }
+
     render(){
         return(
             <Container>
@@ -45,7 +74,8 @@ class UserProfile extends Component {
                     </Col>
                 </Row>
                 <Row>
-
+                    <UserFavs userFavLoad={this.userFavLoad}/>
+                    {!this.state.UserFavs.length ? this.userNoFavs(): this.favsRender()}
                 </Row>
             </Container>
         );
