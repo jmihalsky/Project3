@@ -19,7 +19,11 @@ export class ResortsContainer extends Component {
 
   resortCard = () => {
     let temp = this.state.ResList.map(r => (
-      <HomeResList key={r.resort_id} resort_name={r.resort_name} />
+      <HomeResList
+        key={r.resort_id}
+        resort_name={r.resort_name}
+        cond={r.cond}
+      />
     ));
     return temp;
   };
