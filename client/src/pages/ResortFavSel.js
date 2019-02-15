@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
+import ResList from "../components/ResListFav";
 import API from "../utils/API";
 
 class ResFavoriteSel extends Component {
@@ -27,8 +28,14 @@ class ResFavoriteSel extends Component {
         if(this.state.ResList)
         {
             var newArray = this.state.ResList.map(a => {
-                
+                return <ResList key={a.resort_id}
+                    addFavRes={this.addFavRes}
+                    user_id={this.state.user_id}
+                    resort_id={a.resort_id}
+                    resort_name={a.resort_name}
+                    resort_state={a.state}/>
             })
+            return newArray;
         }
         else
         {
@@ -36,11 +43,23 @@ class ResFavoriteSel extends Component {
         }
     }
 
+    addFavRes = (user_id, resort_id) => {
+        var newFav = {
+            user_id: user_id,
+            resort_id: user_id
+        };
+        API.UserFavSave(newFav).then(res => {
+            console.log(res);
+        });
+
+    }
+
     render(){
         return(
             <Container>
                 <Row>
-                    <Col size="md-12">
+                    <Col size="md-3">
+                    {this.resListRender()}
                     </Col>
                 </Row>
             </Container>

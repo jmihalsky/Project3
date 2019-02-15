@@ -34,7 +34,8 @@ class UsrLogin extends Component {
         if (response.status === 200) {
           this.props.updateUser({
             loggedIn: true,
-            user_name: response.data.user_name
+            user_name: response.data.user_name,
+            user_id: response.data.user_id
           });
           this.setState({
             redirectTo: "/profile/"
@@ -49,7 +50,7 @@ class UsrLogin extends Component {
   render() {
     if (this.state.redirectTo) {
       console.log(this.state.user_name);
-      return <Redirect to={{ pathname: this.state.redirectTo, state: {user_name: this.state.user_name}}} />;
+      return <Redirect to={{ pathname: this.state.redirectTo, state: {user_name: this.state.user_name, user_id: this.state.user_id}}} />;
     } else {
       return (
         <Container>
