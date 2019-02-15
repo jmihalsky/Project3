@@ -18,6 +18,7 @@ export class MapContainer extends Component {
           lat: m.lat,
           lng: m.lon
         }}
+        link={m.web_link}
       />
     ));
     return temp;
@@ -31,7 +32,6 @@ export class MapContainer extends Component {
     });
 
   render() {
-    console.log(this.props.resorts);
     return (
       <div
         style={{
@@ -54,7 +54,13 @@ export class MapContainer extends Component {
           >
             <div>
               <h2>{this.state.selectedPlace.name}</h2>
-              <p>test text</p>
+              <a
+                href={this.state.selectedPlace.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {this.state.selectedPlace.link}
+              </a>
             </div>
           </InfoWindow>
         </Map>
