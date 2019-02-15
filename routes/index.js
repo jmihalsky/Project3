@@ -54,6 +54,17 @@ router.get("/API/usr_resorts/:user_name", function(req,res){
     });
 });
 
+router.post("/API/user_fav_sav",function(req,res){
+    db.user_favs.create({
+        user_id: req.body.user_id,
+        resort_id: req.body.resort_id
+    }).then(function(){
+        res.json("success");
+    }).catch(function(err){
+        res.json(err);
+    });
+});
+
 router.get("/API/test", function(req,res){
     res.json("test");
 });

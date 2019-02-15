@@ -28,7 +28,7 @@ app.use(passport.session());
 app.use(routes);
 
 // Job scheduler
-const snowInfo = schedule.scheduleJob("0 10 8 * * *", function(){
+const snowInfo = schedule.scheduleJob("0 43 19 * * *", function(){
   console.log("scheduler working");
   ResortInfo();
   // ResState();

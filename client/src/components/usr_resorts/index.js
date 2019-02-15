@@ -7,7 +7,7 @@ export default function UserFavs(props){
         <div>
             <Container>
                 <div className="card">
-                    <div clasName="card-header">
+                    <div className="card-header">
 
                     </div>
                 </div>

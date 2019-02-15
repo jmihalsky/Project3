@@ -74,7 +74,6 @@ class UserProfile extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <UserFavs userFavLoad={this.userFavLoad}/>
                     {!this.state.UserFavs.length ? this.userNoFavs(): this.favsRender()}
                 </Row>
             </Container>
