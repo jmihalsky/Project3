@@ -12,6 +12,7 @@ export class MapContainer extends Component {
     let temp = this.props.resorts.map(m => (
       <Marker
         key={m.resort_id}
+        onClick={this.onMarkerClick}
         name={m.resort_name}
         position={{
           lat: m.lat,
