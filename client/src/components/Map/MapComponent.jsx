@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import MapMarkers from "../Marker";
 
 export class MapContainer extends Component {
   state = {
@@ -10,12 +9,14 @@ export class MapContainer extends Component {
   };
 
   resortMarker = () => {
-    let temp = this.props.resorts.map(r => (
-      <MapMarkers
-        key={r.resort_id}
-        resort_name={r.resort_name}
-        lat={r.lat}
-        lon={r.lon}
+    let temp = this.props.resorts.map(m => (
+      <Marker
+        key={m.resort_id}
+        name={m.resort_name}
+        position={{
+          lat: m.lat,
+          lng: m.lon
+        }}
       />
     ));
     return temp;
@@ -45,9 +46,7 @@ export class MapContainer extends Component {
           }}
           zoom={9}
         >
-          <Marker />
           {this.resortMarker()}
-
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
