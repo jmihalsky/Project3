@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import MapMarkers from "../Marker";
 
 export class MapContainer extends Component {
   state = {
@@ -10,12 +9,16 @@ export class MapContainer extends Component {
   };
 
   resortMarker = () => {
-    let temp = this.props.resorts.map(r => (
-      <MapMarkers
-        key={r.resort_id}
-        resort_name={r.resort_name}
-        lat={r.lat}
-        lon={r.lon}
+    let temp = this.props.resorts.map(m => (
+      <Marker
+        key={m.resort_id}
+        onClick={this.onMarkerClick}
+        name={m.resort_name}
+        position={{
+          lat: m.lat,
+          lng: m.lon
+        }}
+        link={m.web_link}
       />
     ));
     return temp;
@@ -29,7 +32,6 @@ export class MapContainer extends Component {
     });
 
   render() {
-    console.log(this.props.resorts);
     return (
       <div
         style={{
@@ -40,21 +42,25 @@ export class MapContainer extends Component {
         <Map
           google={this.props.google}
           center={{
-            lat: 39.094317,
-            lng: -120.0024038
+            lat: 39.0055314,
+            lng: -119.9955374
           }}
           zoom={9}
         >
-          <Marker />
           {this.resortMarker()}
-
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
             <div>
               <h2>{this.state.selectedPlace.name}</h2>
-              <p>test text</p>
+              <a
+                href={this.state.selectedPlace.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {this.state.selectedPlace.link}
+              </a>
             </div>
           </InfoWindow>
         </Map>
