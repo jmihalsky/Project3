@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import MapMarkers from "../Marker";
 
 export class MapContainer extends Component {
-  componentDidMount() {
-    this.resortMarker();
-  }
-
   state = {
     showingInfoWindow: false,
     activeMarker: {},
@@ -14,7 +11,7 @@ export class MapContainer extends Component {
 
   resortMarker = () => {
     let temp = this.props.resorts.map(r => (
-      <Marker
+      <MapMarkers
         key={r.resort_id}
         resort_name={r.resort_name}
         lat={r.lat}
@@ -32,6 +29,7 @@ export class MapContainer extends Component {
     });
 
   render() {
+    console.log(this.props.resorts);
     return (
       <div
         style={{
@@ -47,11 +45,8 @@ export class MapContainer extends Component {
           }}
           zoom={9}
         >
-          <Marker
-            onClick={this.onMarkerClick}
-            name={this.props.resort_name}
-            position={{ lat: this.props.lat, lng: this.props.lon }}
-          />
+          <Marker />
+          {this.resortMarker()}
 
           <InfoWindow
             marker={this.state.activeMarker}
