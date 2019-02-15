@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+          <Nav loggedIn={this.state.loggedIn}/>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/signup" component={SignUp} />
