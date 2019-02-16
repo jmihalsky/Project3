@@ -57,6 +57,7 @@ CREATE TABLE user_res_conditions (
     new_snow int,
     temp int,
     lft_lines varchar(20),
+    cond varchar(20),
     cond_notes text,
     PRIMARY KEY (cond_id)
 );
