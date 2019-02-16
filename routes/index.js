@@ -73,6 +73,24 @@ router.get("/API/resort/:resort_id", function(req,res){
     });
 });
 
+router.get("/API/usr_rpt/:resort_id",function(req,res){
+    db.user_reports.findAll({where: {resort_id: req.params.resort_id},order:[['report_date','DESC']]}).then(function(dbUsrReports){
+        res.json(dbUsrReports);
+    }).catch(function(err){
+
+    });
+});
+
+router.post("/API/usr_rpt",function(req,res){
+    db.user_res_conditions.create({
+
+    }).then(function(){
+        res.json("success");
+    }).catch(function(err){
+        res.json(err);
+    });
+});
+
 router.get("/API/test", function(req,res){
     res.json("test");
 });
