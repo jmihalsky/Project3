@@ -8,12 +8,14 @@ export default function HomeResList(props) {
     <Container>
       <Row>
         <Col size="md-12">
-          <div className="card text-center" style={{ backgroundColor: "#333" }}>
-            <div className="card-header">
-              <h5>{props.resort_name}</h5>
-              <p>Condition: {props.cond}</p>
+          <a href={"/resort/"+ props.resort_id}>
+            <div className="card text-center" style={{ backgroundColor: "#333" }}>
+              <div className="card-header">
+                <h5>{props.resort_name}</h5>
+                <p>Condition: {props.cond}</p>
+              </div>
             </div>
-          </div>
+          </a>
         </Col>
       </Row>
     </Container>

@@ -65,6 +65,14 @@ router.post("/API/user_fav_sav",function(req,res){
     });
 });
 
+router.get("/API/resort/:resort_id", function(req,res){
+    db.resort_weather.findAll({where: {resort_id: req.params.resort_id}}).then(function(dbResort){
+        res.json(dbResort);
+    }).catch(function(err){
+        res.json(err);
+    });
+});
+
 router.get("/API/test", function(req,res){
     res.json("test");
 });
