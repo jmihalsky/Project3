@@ -82,6 +82,17 @@ class ResortPage extends Component {
       return <div><h2>There are currently no user reports available for this resort</h2></div>
   }
 
+  userReportForm = () => {
+      if(this.state.loggedIn)
+      {
+
+      }
+      else
+      {
+          
+      }
+  }
+
   render() {
     return (
       <Container>
@@ -90,7 +101,12 @@ class ResortPage extends Component {
         </Row>
         <Row>
             <Col size="md-12">
-            {!this.state.UserRpts.length ? this.reportsRender() : this.noReports()}
+            <h2>User Resort Conditions Reports</h2>
+            {!this.state.UserRpts.length ? this.noReports() : this.reportsRender()}
+            </Col>
+        </Row>
+        <Row>
+            <Col size="md-12">
             </Col>
         </Row>
       </Container>
