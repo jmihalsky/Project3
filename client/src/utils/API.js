@@ -21,5 +21,8 @@ export default {
     },
     UserFavSave: function(newFav){
         return axios.post("/API/user_fav_sav", newFav);
+    },
+    GetResort: function(resort_id){
+        return axios.get("/API/resort/" + resort_id);
     }
 };

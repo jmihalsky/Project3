@@ -6,6 +6,7 @@ export class ResortsContainer extends Component {
     let temp = this.props.resorts.map(r => (
       <HomeResList
         key={r.resort_id}
+        resort_id={r.resort_id}
         resort_name={r.resort_name}
         cond={r.cond}
       />

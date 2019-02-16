@@ -7,6 +7,7 @@ import UsrProfile from "./pages/UserProfile";
 import HomePage from "./pages/HomePage";
 import SavedResorts from "./pages/SavedResorts";
 import ResFavoriteSel from "./pages/ResortFavSel";
+import ResortPage from "./pages/ResortPage";
 
 class App extends Component {
   constructor() {
@@ -40,6 +41,7 @@ class App extends Component {
             <Route exact path="/profile" component={UsrProfile} />
             <Route exact path="/saved" component={SavedResorts} />
             <Route exact path="/resort_list" component={ResFavoriteSel} />
+            <Route path="/resort/:resort_id" component={ResortPage} />
           </Switch>
         </div>
       </Router>
