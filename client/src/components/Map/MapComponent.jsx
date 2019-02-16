@@ -12,14 +12,14 @@ export class MapContainer extends Component {
     let temp = this.props.resorts.map(m => (
       <Marker
         key={m.resort_id}
-        onClick={this.onMarkerClick}
+        resort_id={m.resort_id}
         name={m.resort_name}
         position={{
           lat: m.lat,
           lng: m.lon
         }}
         link={m.web_link}
-        resort={m.resort_id}
+        onClick={this.onMarkerClick}
       />
     ));
     return temp;
@@ -55,7 +55,7 @@ export class MapContainer extends Component {
           >
             <div>
               <h2>{this.state.selectedPlace.name}</h2>
-              <a href={"/resort/" + this.state.selectedPlace.resort}>
+              <a href={"/resort/" + this.state.selectedPlace.resort_id}>
                 <button
                   className="btn btn-dark btn-sm"
                   style={{ marginRight: "10px" }}
