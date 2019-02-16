@@ -97,11 +97,28 @@ class ResortPage extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-12">
+          <Col size="md-5">
+            <div
+              style={{
+                backgroundColor: "rgba(51, 51, 51, 0.5)",
+                color: "white",
+                textShadow: "2px 2px 4px #000",
+                textAlign: "center",
+                margin: "15px",
+                padding: "5px"
+              }}
+            >
+              <h2>User Resort Conditions Reports</h2>
+              {!this.state.UserRpts.length
+                ? this.noReports()
+                : this.reportsRender()}
+            </div>
+          </Col>
+          <Col size="md-7">
             <div
               style={{
                 position: "relative",
-                height: "400px"
+                height: "600px"
               }}
             >
               <Map
@@ -115,41 +132,20 @@ class ResortPage extends Component {
                 <Marker />
               </Map>
             </div>
+
+            <div
+              style={{
+                backgroundColor: "rgba(51, 51, 51, 0.5)",
+                color: "white",
+                textShadow: "2px 2px 4px #000",
+                textAlign: "center",
+                margin: "15px",
+                padding: "5px"
+              }}
+            >
+              {this.resortRender()}
+            </div>
           </Col>
-        </Row>
-        <Row>
-          <div
-            style={{
-              backgroundColor: "rgba(51, 51, 51, 0.5)",
-              color: "white",
-              textShadow: "2px 2px 4px #000",
-              textAlign: "center",
-              margin: "15px",
-              padding: "5px"
-            }}
-          >
-            <Col size="md-12">{this.resortRender()}</Col>
-          </div>
-        </Row>
-        <Row>
-          <div
-            style={{
-              backgroundColor: "rgba(51, 51, 51, 0.5)",
-              color: "white",
-              textShadow: "2px 2px 4px #000",
-              textAlign: "center",
-              margin: "15px",
-              padding: "5px"
-            }}
-          >
-            <Col size="md-12">
-              <h2>User Resort Conditions Reports</h2>
-              {!this.state.UserRpts.length
-                ? this.noReports()
-                : this.reportsRender()}
-            </Col>
-            <Col size="md-12" />
-          </div>
         </Row>
       </Container>
     );
