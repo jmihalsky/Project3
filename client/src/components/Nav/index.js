@@ -19,13 +19,13 @@ const Nav = props => (
             href="/login"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
-            <button className="btn btn-dark btn-lg">Login</button>
+            <button className="btn btn-dark">Login</button>
           </a>
           <a
             href="/saved"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
-            <button className="btn btn-dark btn-lg">Saved Resorts</button>
+            <button className="btn btn-dark">Saved Resorts</button>
           </a>
         </li>
       </ul>
