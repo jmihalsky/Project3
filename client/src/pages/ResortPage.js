@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import ResortDtl from "../components/resort_dtl";
 import UserReports from "../components/user_reports";
 import UserCondForm from "../components/user_cond_form";
+import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+
 
 class ResortPage extends Component {
   constructor(){
@@ -43,11 +44,11 @@ class ResortPage extends Component {
     });
   };
 
-  getUserReports = (resort_id) => {
-      API.GetUsrRpt(resort_id).then(res => {
-        this.setState({ UserRpts: res.data});
-      });
-  }
+  getUserReports = resort_id => {
+    API.GetUsrRpt(resort_id).then(res => {
+      this.setState({ UserRpts: res.data });
+    });
+  };
 
   resortRender = () => {
     if (this.state.ResInfo) {
@@ -65,7 +66,7 @@ class ResortPage extends Component {
             web_link={a.web_link}
             map_link={a.map_link}
             lat={a.lat}
-            lng={a.lon}
+            lon={a.lon}
           />
         );
       });
@@ -74,32 +75,33 @@ class ResortPage extends Component {
   };
 
   reportsRender = () => {
-      if (this.state.UserRpts)
-      {
-        var rptArray = this.state.UserRpts.map(b => {
-            return (
-                <UserReports
-                    key={b.cond_id}
-                    user_name={b.user_name}
-                    report_date={b.report_date}
-                    new_snow={b.new_snow}
-                    temp={b.temp}
-                    lft_lines={b.lft_lines}
-                    cond_notes={b.cond_notes}
-                />
-            );
-        });
-        return rptArray;
-      }
-      else
-      {
-        this.noReports();
-      }
-  }
+    if (this.state.UserRpts) {
+      var rptArray = this.state.UserRpts.map(b => {
+        return (
+          <UserReports
+            key={b.cond_id}
+            user_name={b.user_name}
+            report_date={b.report_date}
+            new_snow={b.new_snow}
+            temp={b.temp}
+            lft_lines={b.lft_lines}
+            cond_notes={b.cond_notes}
+          />
+        );
+      });
+      return rptArray;
+    } else {
+      this.noReports();
+    }
+  };
 
   noReports = () => {
-      return <div><h2>There are currently no user reports available for this resort</h2></div>
-  }
+    return (
+      <div>
+        <h2>There are currently no user reports available for this resort</h2>
+      </div>
+    );
+  };
 
   handleUserCond = (new_snow, temp, lft_lines,cond,cond_notes) => {
     var UsrCond = {
@@ -115,22 +117,34 @@ class ResortPage extends Component {
   }
 
   userReportForm = () => {
-      if(this.state.loggedIn)
-      {
-
-      }
-      else
-      {
-          
-      }
-  }
+    if (this.state.loggedIn) {
+    } else {
+    }
+  };
 
   render() {
+    console.log(this.state.ResInfo);
     return (
       <Container>
         <Row>
           <Col size="md-12">
-            <Jumbotron />
+            <div
+              style={{
+                position: "relative",
+                height: "400px"
+              }}
+            >
+              <Map
+                google={this.props.google}
+                center={{
+                  lat: 39.264357310357,
+                  lng: -120.12622833252
+                }}
+                zoom={10}
+              >
+                <Marker />
+              </Map>
+            </div>
           </Col>
         </Row>
         <Row>
@@ -148,19 +162,33 @@ class ResortPage extends Component {
           </div>
         </Row>
         <Row>
+          <div
+            style={{
+              backgroundColor: "rgba(51, 51, 51, 0.5)",
+              color: "white",
+              textShadow: "2px 2px 4px #000",
+              textAlign: "center",
+              margin: "15px",
+              padding: "5px"
+            }}
+          >
             <Col size="md-12">
-            <h2>User Resort Conditions Reports</h2>
-            {!this.state.UserRpts.length ? this.noReports() : this.reportsRender()}
+
+              <h2>User Resort Conditions Reports</h2>
+              {!this.state.UserRpts.length
+                ? this.noReports()
+                : this.reportsRender()}
+
             </Col>
-        </Row>
-        <Row>
-            <Col size="md-12">
-              <UserCondForm handleChange={this.handleChange} handleUserCond={this.handleUserCond}/>
-            </Col>
+            <Col size="md-12" />
+          </div>
         </Row>
       </Container>
     );
   }
 }
 
-export default ResortPage;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyDyoARGXJYw3_uPwXUWTn6SBGod1bq-lHo",
+  version: "3.35"
+})(ResortPage);
