@@ -9,7 +9,11 @@ const Nav = props => (
             href="/"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
-            <img src="./banner.png" alt="banner" style={{ height: "70px" }} />
+            <img
+              src="https://i.imgur.com/znLtnF1.png"
+              alt="banner"
+              style={{ height: "70px" }}
+            />
           </a>
         </li>
       </ul>
