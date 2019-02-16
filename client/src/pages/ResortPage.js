@@ -6,15 +6,31 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import ResortDtl from "../components/resort_dtl";
 import UserReports from "../components/user_reports";
+import UserCondForm from "../components/user_cond_form";
 
 class ResortPage extends Component {
-  state = {
-    loggedIn: false,
-    user_name: "",
-    user_id: 0,
-    ResInfo: [],
-    UserRpts: []
-  };
+  constructor(){
+    super();
+    this.state = {
+      loggedIn: false,
+      user_name: "",
+      user_id: 0,
+      ResInfo: [],
+      UserRpts: [],
+      report_date: "",
+      new_snow: 0,
+      temp: 0,
+      lft_lines: "",
+      cond: "",
+      cond_notes: ""
+    };
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  handleChange(event){
+    this.setState({[event.target.name]: event.target.value});
+  }
 
   componentDidMount() {
     this.getResortInfo(this.props.match.params.resort_id);
@@ -85,6 +101,19 @@ class ResortPage extends Component {
       return <div><h2>There are currently no user reports available for this resort</h2></div>
   }
 
+  handleUserCond = (new_snow, temp, lft_lines,cond,cond_notes) => {
+    var UsrCond = {
+      resort_id: this.state.resort_id,
+      user_id: this.state.user_id,
+      report_date: this.state.report_date,
+      new_snow: new_snow,
+      temp: temp,
+      lft_lines: lft_lines,
+      cond: cond,
+      cond_notes: cond_notes
+    };
+  }
+
   userReportForm = () => {
       if(this.state.loggedIn)
       {
@@ -126,6 +155,7 @@ class ResortPage extends Component {
         </Row>
         <Row>
             <Col size="md-12">
+              <UserCondForm handleChange={this.handleChange} handleUserCond={this.handleUserCond}/>
             </Col>
         </Row>
       </Container>
