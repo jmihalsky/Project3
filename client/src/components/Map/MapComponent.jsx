@@ -60,6 +60,14 @@ export class MapContainer extends Component {
                 rel="noopener noreferrer"
               >
                 {this.state.selectedPlace.link}
+                <a href={"/resort/" + this.state.selectedPlace.key}>
+                  <button
+                    className="btn btn-dark btn-sm"
+                    style={{ marginLeft: "10px" }}
+                  >
+                    Resort Info
+                  </button>
+                </a>
               </a>
             </div>
           </InfoWindow>
