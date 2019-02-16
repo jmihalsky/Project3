@@ -19,6 +19,7 @@ export class MapContainer extends Component {
           lng: m.lon
         }}
         link={m.web_link}
+        resort={m.resort_id}
       />
     ));
     return temp;
@@ -54,6 +55,14 @@ export class MapContainer extends Component {
           >
             <div>
               <h2>{this.state.selectedPlace.name}</h2>
+              <a href={"/resort/" + this.state.selectedPlace.resort}>
+                <button
+                  className="btn btn-dark btn-sm"
+                  style={{ marginRight: "10px" }}
+                >
+                  Resort Info
+                </button>
+              </a>
               <a
                 href={this.state.selectedPlace.link}
                 target="_blank"
