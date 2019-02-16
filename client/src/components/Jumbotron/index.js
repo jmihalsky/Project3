@@ -1,16 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
-const Jumbotron = ({ children }) => {
-  return (
-    <div
-      style={{ textAlign: "center", backgroundColor: "white", padding: "0" }}
-      className="jumbotron"
-    >
-      <a href="/">
-        <img src="./banner.png" alt="book-icon" style={{ height: "200px" }} />
-      </a>
-    </div>
-  );
-};
+export class Jumbotron extends Component {
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
 
-export default Jumbotron;
+  render() {
+    return (
+      <div
+        style={{
+          position: "relative",
+          height: "400px"
+        }}
+      >
+        <Map
+          google={this.props.google}
+          center={{
+            lat: 39.0055314,
+            lng: -119.9955374
+          }}
+          zoom={10}
+        >
+          <Marker />
+        </Map>
+      </div>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyDyoARGXJYw3_uPwXUWTn6SBGod1bq-lHo",
+  version: "3.35"
+})(Jumbotron);
