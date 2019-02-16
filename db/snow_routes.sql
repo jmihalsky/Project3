@@ -141,3 +141,18 @@ from usr
             on resort_conditions.resort_id = a.resort_id
             and resort_conditions.report_date = a.report_date) as b 
     on resorts.resort_id = b.resort_id;
+
+CREATE VIEW user_reports
+AS
+select user_res_conditions.cond_id,
+    user_res_conditions.resort_id,
+    user_res_conditions.user_id,
+    usr.user_name,
+    user_res_conditions.report_date,
+    user_res_conditions.new_snow,
+    user_res_conditions.temp,
+    user_res_conditions.lft_lines,
+    user_res_conditions.cond_notes
+from user_res_conditions
+    inner join usr
+    on user_res_conditions.user_id = usr.user_id;

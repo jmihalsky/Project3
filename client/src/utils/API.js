@@ -24,5 +24,8 @@ export default {
     },
     GetResort: function(resort_id){
         return axios.get("/API/resort/" + resort_id);
+    },
+    GetUsrRpt: function(resort_id){
+        return axios.get("/API/usr_rpt/" + resort_id);
     }
 };

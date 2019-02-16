@@ -73,6 +73,14 @@ router.get("/API/resort/:resort_id", function(req,res){
     });
 });
 
+router.get("/API/usr_rpt/:resort_id",function(req,res){
+    db.user_reports.findAll({where: {resort_id: req.params.resort_id},order:[['report_date','DESC']]}).then(function(dbUsrReports){
+        res.json(dbUsrReports);
+    }).catch(function(err){
+
+    });
+});
+
 router.get("/API/test", function(req,res){
     res.json("test");
 });
