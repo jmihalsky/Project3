@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
+import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import ResortDtl from "../components/resort_dtl";
 
@@ -35,6 +36,8 @@ class ResortPage extends Component {
             num_slopes={a.num_slopes}
             web_link={a.web_link}
             map_link={a.map_link}
+            lat={a.lat}
+            lng={a.lon}
           />
         );
       });
@@ -46,7 +49,23 @@ class ResortPage extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-12">{this.resortRender()}</Col>
+          <Col size="md-12">
+            <Jumbotron />
+          </Col>
+        </Row>
+        <Row>
+          <div
+            style={{
+              backgroundColor: "rgba(51, 51, 51, 0.5)",
+              color: "white",
+              textShadow: "2px 2px 4px #000",
+              textAlign: "center",
+              margin: "15px",
+              padding: "5px"
+            }}
+          >
+            <Col size="md-12">{this.resortRender()}</Col>
+          </div>
         </Row>
       </Container>
     );
