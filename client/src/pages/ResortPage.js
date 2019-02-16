@@ -78,6 +78,22 @@ class ResortPage extends Component {
     }
   };
 
+  mapRender = () => {
+    let temp = this.state.ResInfo.map(c => (
+      <Map
+        google={this.props.google}
+        center={{
+          lat: c.lat,
+          lng: c.lon
+        }}
+        zoom={10}
+      >
+        <Marker />
+      </Map>
+    ));
+    return temp;
+  };
+
   noReports = () => {
     return (
       <div>
@@ -93,7 +109,6 @@ class ResortPage extends Component {
   };
 
   render() {
-    console.log(this.state.ResInfo);
     return (
       <Container>
         <Row>
@@ -121,16 +136,7 @@ class ResortPage extends Component {
                 height: "600px"
               }}
             >
-              <Map
-                google={this.props.google}
-                center={{
-                  lat: 39.264357310357,
-                  lng: -120.12622833252
-                }}
-                zoom={10}
-              >
-                <Marker />
-              </Map>
+              {this.mapRender()}
             </div>
 
             <div
