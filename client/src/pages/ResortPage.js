@@ -152,6 +152,21 @@ class ResortPage extends Component {
                 padding: "5px"
               }}
             >
+              <UserCondForm
+                handleChange={this.handleChange}
+                handleUserCond={this.handleUserCond}
+              />
+            </div>
+            <div
+              style={{
+                backgroundColor: "rgba(51, 51, 51, 0.5)",
+                color: "white",
+                textShadow: "2px 2px 4px #000",
+                textAlign: "center",
+                margin: "15px",
+                padding: "5px"
+              }}
+            >
               <h2>User Resort Conditions Reports</h2>
               {!this.state.UserRpts.length
                 ? this.noReports()
