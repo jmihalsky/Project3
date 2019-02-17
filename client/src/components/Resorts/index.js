@@ -25,7 +25,6 @@ export class ResortsContainer extends Component {
           height: "865px"
         }}
       >
-        <h3>Ski Resorts:</h3>
         {this.resortCard()}
       </div>
     );

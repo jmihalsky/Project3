@@ -6,7 +6,7 @@ export default function UserCondForm(props) {
       <h4>Enter resort condition information</h4>
 
       <form className="form">
-        <div class="form-row">
+        <div className="form-row">
           <div className="form-group col-md-6">
             <input
               className="form-control"
