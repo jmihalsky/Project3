@@ -98,13 +98,14 @@ class ResortPage extends Component {
     let temp = this.state.ResInfo.map(c => (
       <Map
         google={this.props.google}
+        key={c.resort_id}
         center={{
           lat: c.lat,
           lng: c.lon
         }}
         zoom={10}
       >
-        <Marker />
+        <Marker label={c.resort_name} />
       </Map>
     ));
     return temp;
