@@ -8,9 +8,8 @@ import UserReports from "../components/user_reports";
 import UserCondForm from "../components/user_cond_form";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 
-
 class ResortPage extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       loggedIn: false,
@@ -28,9 +27,9 @@ class ResortPage extends Component {
     // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-  
-  handleChange(event){
-    this.setState({[event.target.name]: event.target.value});
+
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   componentDidMount() {
@@ -95,6 +94,22 @@ class ResortPage extends Component {
     }
   };
 
+  mapRender = () => {
+    let temp = this.state.ResInfo.map(c => (
+      <Map
+        google={this.props.google}
+        center={{
+          lat: c.lat,
+          lng: c.lon
+        }}
+        zoom={10}
+      >
+        <Marker />
+      </Map>
+    ));
+    return temp;
+  };
+
   noReports = () => {
     return (
       <div>
@@ -103,7 +118,7 @@ class ResortPage extends Component {
     );
   };
 
-  handleUserCond = (new_snow, temp, lft_lines,cond,cond_notes) => {
+  handleUserCond = (new_snow, temp, lft_lines, cond, cond_notes) => {
     var UsrCond = {
       resort_id: this.state.resort_id,
       user_id: this.state.user_id,
@@ -114,7 +129,7 @@ class ResortPage extends Component {
       cond: cond,
       cond_notes: cond_notes
     };
-  }
+  };
 
   userReportForm = () => {
     if (this.state.loggedIn) {
@@ -123,65 +138,49 @@ class ResortPage extends Component {
   };
 
   render() {
-    console.log(this.state.ResInfo);
     return (
       <Container>
         <Row>
-          <Col size="md-12">
+          <Col size="md-5">
             <div
               style={{
-                position: "relative",
-                height: "400px"
+                backgroundColor: "rgba(51, 51, 51, 0.5)",
+                color: "white",
+                textShadow: "2px 2px 4px #000",
+                textAlign: "center",
+                margin: "15px",
+                padding: "5px"
               }}
             >
-              <Map
-                google={this.props.google}
-                center={{
-                  lat: 39.264357310357,
-                  lng: -120.12622833252
-                }}
-                zoom={10}
-              >
-                <Marker />
-              </Map>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <div
-            style={{
-              backgroundColor: "rgba(51, 51, 51, 0.5)",
-              color: "white",
-              textShadow: "2px 2px 4px #000",
-              textAlign: "center",
-              margin: "15px",
-              padding: "5px"
-            }}
-          >
-            <Col size="md-12">{this.resortRender()}</Col>
-          </div>
-        </Row>
-        <Row>
-          <div
-            style={{
-              backgroundColor: "rgba(51, 51, 51, 0.5)",
-              color: "white",
-              textShadow: "2px 2px 4px #000",
-              textAlign: "center",
-              margin: "15px",
-              padding: "5px"
-            }}
-          >
-            <Col size="md-12">
-
               <h2>User Resort Conditions Reports</h2>
               {!this.state.UserRpts.length
                 ? this.noReports()
                 : this.reportsRender()}
+            </div>
+          </Col>
+          <Col size="md-7">
+            <div
+              style={{
+                position: "relative",
+                height: "600px"
+              }}
+            >
+              {this.mapRender()}
+            </div>
 
-            </Col>
-            <Col size="md-12" />
-          </div>
+            <div
+              style={{
+                backgroundColor: "rgba(51, 51, 51, 0.5)",
+                color: "white",
+                textShadow: "2px 2px 4px #000",
+                textAlign: "center",
+                margin: "15px",
+                padding: "5px"
+              }}
+            >
+              {this.resortRender()}
+            </div>
+          </Col>
         </Row>
       </Container>
     );
