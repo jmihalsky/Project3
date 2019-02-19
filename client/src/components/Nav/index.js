@@ -1,12 +1,13 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Nav = props => (
   <div>
     <nav className="navbar" style={{ backgroundColor: "#333" }}>
       <ul className="nav navbar-nav navbar-left">
         <li>
-          <a
-            href="/"
+          <Link
+            to="/"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
             <img
@@ -14,17 +15,17 @@ const Nav = props => (
               alt="banner"
               style={{ height: "70px" }}
             />
-          </a>
+          </Link>
         </li>
       </ul>
       <ul className="nav navbar-nav navbar-right">
         <li>
-          <a
-            href="/login"
+          <Link
+            to="/login"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}
           >
             <button className="btn btn-dark">Login</button>
-          </a>
+          </Link>
           <a
             href="/saved"
             style={{ color: "white", textDecoration: "none", fontSize: "16px" }}

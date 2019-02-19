@@ -30,7 +30,7 @@ class UsrLogin extends Component {
     };
     API.loginUser(UserInfo)
       .then(response => {
-        console.log(response);
+        console.log(response.data.user_id);
         if (response.status === 200) {
           this.props.updateUser({
             loggedIn: true,

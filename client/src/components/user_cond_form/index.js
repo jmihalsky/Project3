@@ -31,7 +31,7 @@ export default function UserCondForm(props) {
               <option value="Hard Pack">Hard Pack</option>
               <option value="Icy">Icy</option>
               <option value="Loose Granular">Loose Granular</option>
-              <option value="Machine Grromed">Machine Groomed</option>
+              <option value="Machine Groomed">Machine Groomed</option>
               <option value="Packed Powder">Packed Powder</option>
               <option value="Powder">Powder</option>
               <option value="Spring Conditions">Spring Conditions</option>

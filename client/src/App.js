@@ -22,6 +22,7 @@ class App extends Component {
   }
 
   updateUser(userObject) {
+    console.log(userObject);
     this.setState(userObject);
   }
 
@@ -38,10 +39,10 @@ class App extends Component {
               path="/login"
               render={() => <UsrLogin updateUser={this.updateUser} />}
             />
-            <Route exact path="/profile" component={UsrProfile} />
+            <Route exact path="/profile" render={(props) => <UsrProfile {...props} state={this.state}/>} />
             <Route exact path="/saved" component={SavedResorts} />
-            <Route exact path="/resort_list" component={ResFavoriteSel} />
-            <Route path="/resort/:resort_id" component={ResortPage} />
+            <Route exact path="/resort_list" render={(props) => <ResFavoriteSel {...props} state={this.state}/>} />
+            <Route path="/resort/:resort_id" render={(props) => <ResortPage {...props} state={this.state}/>}/>
           </Switch>
         </div>
       </Router>

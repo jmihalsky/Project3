@@ -23,8 +23,9 @@ passport.use(new LocalStrategy(
     }).then(function(dbUser) {
       // If there's no user with the given email
       if (!dbUser) {
+        console.log("user does not exist");
         return done(null, false, {
-          message: "Incorrect Email"
+          message: "User does not exist"
         });
       }
       // If there is a user with the given email, but the password the user gives us is incorrect

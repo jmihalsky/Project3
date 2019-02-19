@@ -25,8 +25,10 @@ router.post("/API/signup", function(req, res) {
 
 router.post("/API/login", passport.authenticate("local"), function(req, res) {
   console.log("logged in ", req.body.user_name);
+  console.log(req.user.user_id);
   userInfo = {
     user_name: req.body.user_name,
+    user_id: req.user.user_id,
     logged_in: true
   };
   res.send(userInfo);
@@ -58,7 +60,7 @@ router.get("/API/resort_all", function(req, res) {
     });
 });
 
-router.get("/API/usr_resorts/:user_name", function(req, res) {
+router.get("/API/user_resorts/:user_name", function(req, res) {
   db.usr_resort_favs
     .findAll({ where: { user_name: req.params.user_name } })
     .then(function(dbUserFavs) {

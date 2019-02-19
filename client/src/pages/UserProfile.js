@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
@@ -9,13 +10,17 @@ import API from "../utils/API";
 
 class UserProfile extends Component {
     state = {
+        loggedIn: false,
         user_name: "",
+        user_id: 0,
         UserProfile: [],
         UserFavs: []
     }
 
     componentDidMount(){
+        this.setState({loggedIn: this.props.state.loggedIn, user_name: this.props.state.user_name, user_id: this.props.state.user_id, resort_id: this.props.match.params.resort_id})
         this.profileLoad(this.props.location.state.user_name);
+        this.userFavLoad(this.props.location.state.user_name);
     }
 
     profileLoad = (user_name) => {
@@ -42,6 +47,7 @@ class UserProfile extends Component {
 
     userFavLoad = (user_name) => {
         API.UserResFavs(user_name).then(res => {
+            console.log(res.data);
             this.setState({UserFavs: res.data});
         });
     }
@@ -57,12 +63,12 @@ class UserProfile extends Component {
         }
         else
         {
-            this.userNoFavs();
+            this.userNoFavs(this.state.user_id);
         }
     }
 
     userNoFavs = () => {
-        return <NoFavs></NoFavs>;
+        return <NoFavs/>;
     }
 
     render(){

@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes){
                 isEmail: true
             }
         },
-        fist_name: {
+        first_name: {
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -78,10 +78,6 @@ module.exports = function(sequelize, DataTypes){
         map_link: {
             type: DataTypes.STRING,
             allowNull: true
-        },
-        report_date: {
-            type: DataTypes.DATE(6),
-            allowNull: false
         },
         new_snow: {
             type: DataTypes.INTEGER,
