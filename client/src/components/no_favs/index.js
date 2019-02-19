@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import Row from "../Row";
 import Col from "../Col";
 
@@ -13,7 +14,7 @@ export default function NoFavs(){
             <Row>
                 <Col size="md-5"></Col>
                 <Col size="md-2">
-                    <a href="/resort_list"><button className="btn btn-primary">Add Resorts</button></a>
+                    <Link to="/resort_list"><button className="btn btn-primary">Add Resorts</button></Link>
                 </Col>
                 <Col size="md-5"></Col>
             </Row>

@@ -6,6 +6,7 @@ import API from "../utils/API";
 import ResortDtl from "../components/resort_dtl";
 import UserReports from "../components/user_reports";
 import UserCondForm from "../components/user_cond_form";
+import AltLogin from "../components/alt_login";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 
 class ResortPage extends Component {
@@ -15,6 +16,7 @@ class ResortPage extends Component {
       loggedIn: false,
       user_name: "",
       user_id: 0,
+      resort_id: 0,
       ResInfo: [],
       UserRpts: [],
       report_date: "",
@@ -33,6 +35,7 @@ class ResortPage extends Component {
   }
 
   componentDidMount() {
+    this.setState({loggedIn: this.props.state.loggedIn, user_name: this.props.state.user_name, user_id: this.props.state.user_id, resort_id: this.props.match.params.resort_id});
     this.getResortInfo(this.props.match.params.resort_id);
     this.getUserReports(this.props.match.params.resort_id);
   }
@@ -153,10 +156,10 @@ class ResortPage extends Component {
                 padding: "5px"
               }}
             >
-              <UserCondForm
+             {this.state.loggedIn ? <UserCondForm
                 handleChange={this.handleChange}
                 handleUserCond={this.handleUserCond}
-              />
+              /> : <AltLogin/>} 
             </div>
             <div
               style={{

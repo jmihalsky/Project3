@@ -9,12 +9,14 @@ import API from "../utils/API";
 
 class ResFavoriteSel extends Component {
     state = {
+        loggedIn: false,
         user_name: "",
         user_id: 0,
         ResList: []
     }
 
     componentDidMount(){
+        this.setState({loggedIn: this.props.state.loggedIn, user_name: this.props.state.user_name, user_id: this.props.state.user_id, resort_id: this.props.match.params.resort_id});
         this.resListLoad();
     }
 
@@ -46,7 +48,7 @@ class ResFavoriteSel extends Component {
     addFavRes = (user_id, resort_id) => {
         var newFav = {
             user_id: user_id,
-            resort_id: user_id
+            resort_id: resort_id
         };
         API.UserFavSave(newFav).then(res => {
             console.log(res);

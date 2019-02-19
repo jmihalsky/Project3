@@ -3,7 +3,7 @@ import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 import MapComponent from "../components/Map/MapComponent";
-import ResortsComponent from "../components/Resorts";
+import ResortsContainer from "../components/Resorts";
 import API from "../utils/API";
 
 class HomePage extends Component {
@@ -17,7 +17,7 @@ class HomePage extends Component {
 
   getResorts = () => {
     API.AllResorts().then(res => {
-      this.setState({ ResList: res.data });
+      this.setState({ResList: res.data});
     });
   };
 
@@ -26,7 +26,7 @@ class HomePage extends Component {
       <Container>
         <Row>
           <Col size="md-4">
-            <ResortsComponent resorts={this.state.ResList} />
+            <ResortsContainer resorts={this.state.ResList} />
           </Col>
           <Col size="md-8">
             <MapComponent resorts={this.state.ResList} />

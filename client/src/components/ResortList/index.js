@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import Container from "../Container";
 import Row from "../Row";
 import Col from "../Col";
@@ -12,9 +13,9 @@ export default function HomeResList(props) {
             <div className="card-header">
               <h5>{props.resort_name}</h5>
               <p>Condition: {props.cond}</p>
-              <a href={"/resort/" + props.resort_id}>
+              <Link to={"/resort/" + props.resort_id}>
                 <button className="btn btn-dark btn-sm">Resort Info</button>
-              </a>
+              </Link>
             </div>
           </div>
         </Col>
