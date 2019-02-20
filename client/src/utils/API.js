@@ -28,5 +28,8 @@ export default {
     UserReport: function(UsrCond){
         console.log(UsrCond);
         return axios.post("/API/usr_rpt", UsrCond);
+    },
+    LogoffUser: function(){
+        return axios.post("/API/logout");
     }
 };

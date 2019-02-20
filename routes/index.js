@@ -137,4 +137,9 @@ router.get("/API/test", function(req, res) {
   })
 });
 
+router.post("/API/logout", function(req,res){
+  req.logout();
+  res.json({loggedIn: false});
+});
+
 module.exports = router;
