@@ -34,7 +34,7 @@ class Search extends Component {
     return (
       <form>
         <input
-          placeholder="Search for..."
+          placeholder="Search for a Resort..."
           ref={input => (this.search = input)}
           onChange={this.handleInputChange}
         />
