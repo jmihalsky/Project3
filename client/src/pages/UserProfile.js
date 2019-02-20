@@ -57,7 +57,11 @@ class UserProfile extends Component {
         {
             var resArray = this.state.UserFavs.map(b => {
                 return <UserFavs key={b.resort_id}
-                        resort_name={b.resort_name}/>
+                        resort_id={b.resort_id}
+                        resort_name={b.resort_name}
+                        new_snow={b.new_snow}
+                        cond={b.cond}
+                        num_slopes_open={b.num_slopes_open}/>
             })
             return resArray;
         }
