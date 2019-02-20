@@ -130,7 +130,11 @@ router.post("/API/usr_rpt", function(req, res) {
 });
 
 router.get("/API/test", function(req, res) {
-  res.json("test");
+  db.user_res_conditions.findAll({}).then(function(dbTest){
+    res.json(dbTest);
+  }).catch(function(err){
+    res.json(err);
+  })
 });
 
 module.exports = router;

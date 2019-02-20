@@ -2,7 +2,6 @@ module.exports = function(sequelize, DataTypes){
     var user_res_conditions = sequelize.define("user_res_conditions",{
         cond_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             PrimaryKey: true
         },
         resort_id: {

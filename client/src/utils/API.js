@@ -6,11 +6,9 @@ export default {
         return axios.post("/API/signup", NewUser);
     },
     loginUser: function(UserInfo){
-        console.log(UserInfo);
         return axios.post("/API/login", UserInfo);
     },
     UserProfile: function(user_name){
-        console.log(user_name);
         return axios.get("/API/userinfo/" + user_name);
     },
     AllResorts: function(){
@@ -29,6 +27,7 @@ export default {
         return axios.get("/API/usr_rpt/" + resort_id);
     },
     UserReport: function(UsrCond){
+        console.log(UsrCond);
         return axios.post("/API/usr_rpt", UsrCond);
     }
 };
