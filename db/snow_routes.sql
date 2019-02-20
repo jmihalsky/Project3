@@ -153,6 +153,7 @@ select user_res_conditions.cond_id,
     user_res_conditions.new_snow,
     user_res_conditions.temp,
     user_res_conditions.lft_lines,
+    user_res_conditions.cond,
     user_res_conditions.cond_notes
 from user_res_conditions
     inner join usr

@@ -38,7 +38,7 @@ class ResortPage extends Component {
 
   componentDidMount() {
     let tst_date = moment().format();
-    this.setState({loggedIn: this.props.state.loggedIn, user_name: this.props.state.user_name, user_id: this.props.state.user_id, resort_id: this.props.match.params.resort_id, report_date: tst_date});
+    this.setState({loggedIn: this.props.state.loggedIn, user_name: this.props.state.user_name, user_id: this.props.state.user_id, resort_id: parseInt(this.props.match.params.resort_id), report_date: tst_date});
     this.getResortInfo(this.props.match.params.resort_id);
     this.getUserReports(this.props.match.params.resort_id);
   }
@@ -90,6 +90,7 @@ class ResortPage extends Component {
             new_snow={b.new_snow}
             temp={b.temp}
             lft_lines={b.lft_lines}
+            cond={b.cond}
             cond_notes={b.cond_notes}
           />
         );
@@ -146,7 +147,7 @@ class ResortPage extends Component {
         }
         else
         {
-          console.log("success");
+          console.log("no success");
         }
       }).catch(error => {
         console.log(error);
