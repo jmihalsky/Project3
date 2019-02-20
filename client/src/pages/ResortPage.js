@@ -8,6 +8,8 @@ import UserReports from "../components/user_reports";
 import UserCondForm from "../components/user_cond_form";
 import AltLogin from "../components/alt_login";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import moment from "moment";
+import { format } from "path";
 
 class ResortPage extends Component {
   constructor() {
@@ -26,7 +28,7 @@ class ResortPage extends Component {
       cond: "",
       cond_notes: ""
     };
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUserCond = this.handleUserCond.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -35,7 +37,8 @@ class ResortPage extends Component {
   }
 
   componentDidMount() {
-    this.setState({loggedIn: this.props.state.loggedIn, user_name: this.props.state.user_name, user_id: this.props.state.user_id, resort_id: this.props.match.params.resort_id});
+    let tst_date = moment().format();
+    this.setState({loggedIn: this.props.state.loggedIn, user_name: this.props.state.user_name, user_id: this.props.state.user_id, resort_id: this.props.match.params.resort_id, report_date: tst_date});
     this.getResortInfo(this.props.match.params.resort_id);
     this.getUserReports(this.props.match.params.resort_id);
   }
@@ -122,17 +125,32 @@ class ResortPage extends Component {
     );
   };
 
-  handleUserCond = (new_snow, temp, lft_lines, cond, cond_notes) => {
+  handleUserCond = (event) => {
+    event.preventDefault();
     var UsrCond = {
       resort_id: this.state.resort_id,
       user_id: this.state.user_id,
       report_date: this.state.report_date,
-      new_snow: new_snow,
-      temp: temp,
-      lft_lines: lft_lines,
-      cond: cond,
-      cond_notes: cond_notes
+      new_snow: this.state.new_snow,
+      temp: this.state.temp,
+      lft_lines: this.state.lft_lines,
+      cond: this.state.cond,
+      cond_notes: this.state.cond_notes
     };
+    console.log(UsrCond);
+    API.UserReport(UsrCond)
+      .then(res => {
+        if (!res.data.errmsg)
+        {
+          console.log(res.data.errmsg);
+        }
+        else
+        {
+          console.log("success");
+        }
+      }).catch(error => {
+        console.log(error);
+      })
   };
 
   userReportForm = () => {

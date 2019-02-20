@@ -27,5 +27,8 @@ export default {
     },
     GetUsrRpt: function(resort_id){
         return axios.get("/API/usr_rpt/" + resort_id);
+    },
+    UserReport: function(UsrCond){
+        return axios.post("/API/usr_rpt", UsrCond);
     }
 };
