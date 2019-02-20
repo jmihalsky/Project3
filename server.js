@@ -5,7 +5,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 const schedule = require("node-schedule");
-require("dotenv").config({ path: "./keys/apikey.env" });
+
+const history = require("connect-history-api-fallback");
+require("dotenv").config({path: "./keys/apikey.env"});
+
 const ResortInfo = require("./weather_api/weather");
 const ResState = require("./resort_state");
 
@@ -16,11 +19,12 @@ app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  
 }
 
-app.get("/", function(req, res) {
-  res.sendfile(__dirname + "/index.html");
-});
+app.use(history());
+
+
 
 // Passport info
 app.use(
