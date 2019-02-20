@@ -109,8 +109,18 @@ router.get("/API/usr_rpt/:resort_id", function(req, res) {
 });
 
 router.post("/API/usr_rpt", function(req, res) {
+  console.log(req.body);
   db.user_res_conditions
-    .create({})
+    .create({
+      resort_id: req.body.resort_id,
+      user_id: req.body.user_id,
+      report_date: req.body.report_date,
+      new_snow: req.body.new_snow,
+      temp: req.body.temp,
+      lft_lines: req.body.lft_lines,
+      cond: req.body.cond,
+      cond_notes: req.body.cond_notes
+    })
     .then(function() {
       res.json("success");
     })
