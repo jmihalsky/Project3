@@ -3,6 +3,7 @@ const path = require("path");
 const router = require("express").Router();
 
 const db = require("../smodels");
+const Op = require("sequelize").Op;
 const passport = require("../configuration/passport");
 
 router.post("/API/signup", function(req, res) {
@@ -58,6 +59,15 @@ router.get("/API/resort_all", function(req, res) {
     .catch(function(err) {
       res.json(err);
     });
+});
+
+router.get("/API/resort_search/:srchQry", function(req,res){
+  console.log(req.params.srchQry);
+  db.resort_weather.findAll({where: {resort_name: {[Op.like]: "%" + req.params.srchQry + "%"}}}).then(function(dbRstSearch){
+    res.json(dbRstSearch);
+  }).catch(function(err){
+    res.json(err);
+  });
 });
 
 router.get("/API/user_resorts/:user_name", function(req, res) {
@@ -135,6 +145,11 @@ router.get("/API/test", function(req, res) {
   }).catch(function(err){
     res.json(err);
   })
+});
+
+router.post("/API/logout", function(req,res){
+  req.logout();
+  res.json({loggedIn: false});
 });
 
 module.exports = router;

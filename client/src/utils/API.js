@@ -10,8 +10,16 @@ export default {
     UserProfile: function(user_name){
         return axios.get("/API/userinfo/" + user_name);
     },
-    AllResorts: function(){
-        return axios.get("/API/resort_all");
+    AllResorts: function(srchQry){
+        if(typeof(srchQry) === "undefined")
+        {
+            return axios.get("/API/resort_all");
+        }
+        else
+        {
+            console.log(srchQry);
+           return axios.get("/API/resort_search/" + srchQry);
+        }
     },
     UserResFavs: function(user_name){
         return axios.get("/API/user_resorts/" + user_name);
@@ -28,5 +36,8 @@ export default {
     UserReport: function(UsrCond){
         console.log(UsrCond);
         return axios.post("/API/usr_rpt", UsrCond);
+    },
+    LogoffUser: function(){
+        return axios.post("/API/logout");
     }
 };

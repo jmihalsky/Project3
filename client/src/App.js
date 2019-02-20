@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   updateUser(userObject) {
-    console.log(userObject);
     this.setState(userObject);
   }
 
@@ -30,7 +29,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav loggedIn={this.state.loggedIn}/>
+          <Nav loggedIn={this.state.loggedIn} user_name={this.state.user_name} updateUser={this.updateUser}/>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/signup" component={SignUp} />

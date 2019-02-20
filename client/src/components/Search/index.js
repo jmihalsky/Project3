@@ -3,14 +3,20 @@ import Suggestions from "../Suggestions";
 import API from "../../utils/API";
 
 class Search extends Component {
-  state = {
-    query: "",
-    results: []
-  };
+  constructor(){
+    super();
+    this.state = {
+      query: "",
+      results: []
+    };
+    // this.searchUpdate = this.searchUpdate.bind(this);
+  }
+  
 
   getInfo = () => {
     API.AllResorts(this.state.query).then(res => {
-      this.setState({ results: res.data });
+      console.log(res.data);
+      this.setState({results: res.data});
     });
   };
 
