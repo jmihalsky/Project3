@@ -11,7 +11,6 @@ class Nav extends Component {
   logout = (event) => {
     event.preventDefault();
     API.LogoffUser().then(response => {
-      console.log(response.status);
       if(response.status === 200)
       {
         this.props.updateUser({
