@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   updateUser(userObject) {
-    console.log(userObject);
     this.setState(userObject);
   }
 
