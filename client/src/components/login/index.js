@@ -1,6 +1,6 @@
 // User login component
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import API from "../../utils/API";
 import Container from "../Container";
 import Row from "../Row";
@@ -97,9 +97,9 @@ class UsrLogin extends Component {
                     </button>
                   </div>
                 </form>
-                <a href="/signup">
+                <Link to="/signup">
                   <button className="btn btn-secondary">Sign Up</button>
-                </a>
+                </Link>
               </div>
             </Col>
           </Row>
