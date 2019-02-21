@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HomeResList from "../ResortList";
+import Search from "../Search";
 
 export class ResortsContainer extends Component {
   resortCard = () => {
@@ -25,6 +26,7 @@ export class ResortsContainer extends Component {
           height: "865px"
         }}
       >
+        <Search searchUpdate={this.searchUpdate} />
         {this.resortCard()}
       </div>
     );

@@ -4,7 +4,6 @@ import Row from "../components/Row";
 import Col from "../components/Col";
 import MapComponent from "../components/Map/MapComponent";
 import ResortsContainer from "../components/Resorts";
-import Search from "../components/Search";
 import API from "../utils/API";
 
 class HomePage extends Component {
@@ -31,7 +30,6 @@ class HomePage extends Component {
       <Container>
         <Row>
           <Col size="md-4">
-            <Search searchUpdate={this.searchUpdate} />
             <ResortsContainer resorts={this.state.ResList} />
           </Col>
           <Col size="md-8">
