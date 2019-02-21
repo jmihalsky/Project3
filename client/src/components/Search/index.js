@@ -3,7 +3,7 @@ import Suggestions from "../Suggestions";
 import API from "../../utils/API";
 
 class Search extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       query: "",
@@ -11,12 +11,11 @@ class Search extends Component {
     };
     // this.searchUpdate = this.searchUpdate.bind(this);
   }
-  
 
   getInfo = () => {
     API.AllResorts(this.state.query).then(res => {
       console.log(res.data);
-      this.setState({results: res.data});
+      this.setState({ results: res.data });
     });
   };
 
