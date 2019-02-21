@@ -56,14 +56,14 @@ export class MapContainer extends Component {
           >
             <div>
               <h2>{this.state.selectedPlace.name}</h2>
-              <Link to={"/resort/" + this.state.selectedPlace.resort_id}>
+              <a href={"/resort/" + this.state.selectedPlace.resort_id}>
                 <button
                   className="btn btn-dark btn-sm"
                   style={{ marginRight: "10px" }}
                 >
                   Resort Info
                 </button>
-              </Link>
+              </a>
               <a
                 href={this.state.selectedPlace.link}
                 target="_blank"
