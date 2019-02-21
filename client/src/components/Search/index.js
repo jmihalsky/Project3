@@ -37,7 +37,7 @@ class Search extends Component {
 
   render() {
     return (
-      <form>
+      <form style={{ paddingTop: "10px" }}>
         <input
           placeholder="Search for a Resort..."
           ref={input => (this.search = input)}
