@@ -16,9 +16,9 @@ class HomePage extends Component {
     ResList: []
   };
 
-  searchUpdate = (searchObj) => {
-    this.setState({ResList: searchObj})
-  }
+  searchUpdate = searchObj => {
+    this.setState({ ResList: searchObj });
+  };
 
   getResorts = () => {
     API.AllResorts().then(res => {
@@ -31,7 +31,7 @@ class HomePage extends Component {
       <Container>
         <Row>
           <Col size="md-4">
-            <Search searchUpdate={this.searchUpdate}/>
+            <Search searchUpdate={this.searchUpdate} />
             <ResortsContainer resorts={this.state.ResList} />
           </Col>
           <Col size="md-8">
