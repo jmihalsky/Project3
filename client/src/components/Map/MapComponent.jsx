@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 export class MapContainer extends Component {
@@ -55,14 +56,14 @@ export class MapContainer extends Component {
           >
             <div>
               <h2>{this.state.selectedPlace.name}</h2>
-              <a href={"/resort/" + this.state.selectedPlace.resort_id}>
+              <Link to={"/resort/" + this.state.selectedPlace.resort_id}>
                 <button
                   className="btn btn-dark btn-sm"
                   style={{ marginRight: "10px" }}
                 >
                   Resort Info
                 </button>
-              </a>
+              </Link>
               <a
                 href={this.state.selectedPlace.link}
                 target="_blank"
