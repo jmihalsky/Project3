@@ -12,6 +12,7 @@ export default function HomeResList(props) {
           <div className="card text-center" style={{ backgroundColor: "#333" }}>
             <div className="card-header">
               <h5>{props.resort_name}</h5>
+              <p>New Snow: {props.new_snow}</p>
               <p>Condition: {props.cond}</p>
               <Link to={"/resort/" + props.resort_id}>
                 <button className="btn btn-dark btn-sm">Resort Info</button>
