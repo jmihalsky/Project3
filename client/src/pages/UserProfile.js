@@ -91,8 +91,16 @@ class UserProfile extends Component {
         <Row>
           <Col size="md-12">
             {!this.state.UserFavs.length
-              ? this.userNoFavs()
+              ? 
+              this.userNoFavs()
               : this.favsRender()}
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-12">
+            <Link to="/resort_list">
+              <button className="btn btn-secondary btn-lg">Add Resorts</button>
+            </Link>
           </Col>
         </Row>
       </Container>
