@@ -9,7 +9,6 @@ import UserCondForm from "../components/user_cond_form";
 import AltLogin from "../components/alt_login";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import moment from "moment";
-import { format } from "path";
 
 class ResortPage extends Component {
   constructor() {
