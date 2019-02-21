@@ -1,10 +1,11 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Suggestions = props => {
   const options = props.results.map(s => (
-    <a className="resortSearch" href={"/resort/" + s.resort_id}>
+    <Link className="resortSearch" to={"/resort/" + s.resort_id}>
       <li key={s.resort_id}>{s.resort_name}</li>
-    </a>
+    </Link>
   ));
   return <ul>{options}</ul>;
 };
