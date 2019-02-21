@@ -8,6 +8,7 @@ export class ResortsContainer extends Component {
         key={r.resort_id}
         resort_id={r.resort_id}
         resort_name={r.resort_name}
+        new_snow={r.new_snow}
         cond={r.cond}
       />
     ));
